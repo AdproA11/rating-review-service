@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class RatingReview{
-    private String productId;
+    private String boxId;
     private int rating;
     private String review;
 }
