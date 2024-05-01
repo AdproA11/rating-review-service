@@ -2,22 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Rating for Box</title>
+    <title>Add New Rating</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERd`knLPMO" crossorigin="anonymous">
 </head>
 <body>
 
 <div class="container">
-    <h3>Add New Rating & Review</h3>
+    <h3>Add a new rating and review</h3>
 
     <form th:action="@{/rating-review/add}" th:object="${ratingReview}" method="post">
         <div class="form-group">
-            <label for="quantityInput">Rating</label>
-            <input th:field="*{rating}" type="text" class="form-control mb-4 col-4" id="quantityInput" placeholder="Enter box rating">
+            <label for="ratingInput">Rating</label>
+            <input th:field="*{rating}" type="number" class="form-control mb-4 col-4" id="ratingInput" placeholder="Enter box rating" min="1" max="5" step="1">
         </div>
         <div class="form-group">
-            <label for="nameInput">Review</label>
-            <input th:field="*{review}" type="text" class="form-control mb-4 col-4" id="nameInput" placeholder="Enter box review">
+            <label for="reviewInput">Review</label>
+            <input th:field="*{review}" type="text" class="form-control mb-4 col-4" id="reviewInput" placeholder="Enter box review">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

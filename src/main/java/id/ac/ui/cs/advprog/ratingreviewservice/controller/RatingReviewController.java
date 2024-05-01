@@ -19,8 +19,8 @@ public class RatingReviewController {
     @GetMapping("/add")
     public String addRatingReviewPage(Model model) {
         RatingReview ratingReview = new RatingReview();
-        model.addAttribute("rating & review", ratingReview);
-        return "CreateRatingReview";
+        model.addAttribute("ratingReview", ratingReview);
+        return "addRatingReview";
     }
 
     @PostMapping("/add")
@@ -32,7 +32,7 @@ public class RatingReviewController {
     @GetMapping("/list")
     public String ratingReviewListPage(Model model) {
         List<RatingReview> allRatingReview = service.findAll();
-        model.addAttribute("review box", allRatingReview);
-        return "RatingReviewList";
+        model.addAttribute("reviewBox", allRatingReview);
+        return "listRatingReview";
     }
 }
