@@ -24,7 +24,7 @@ public class RatingReviewController {
     }
 
     @PostMapping("/add")
-    public String addRatingReviewPost(@ModelAttribute RatingReview ratingReview, Model model) {
+    public String addRatingReview(@ModelAttribute RatingReview ratingReview, Model model) {
         service.create(ratingReview);
         return "redirect:list";
     }
@@ -32,7 +32,7 @@ public class RatingReviewController {
     @GetMapping("/list")
     public String ratingReviewListPage(Model model) {
         List<RatingReview> allRatingReview = service.findAll();
-        model.addAttribute("reviewBox", allRatingReview);
+        model.addAttribute("ratingReviews", allRatingReview);
         return "listRatingReview";
     }
 }
