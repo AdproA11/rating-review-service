@@ -7,8 +7,9 @@ import java.util.UUID;
 
 @Getter @Setter
 public class RatingReview{
-    private String boxId;
+    private long subscriptionId;
     private String ratingReviewId;
+    private String ownerName;
     private int rating;
     private String review;
 
