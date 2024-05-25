@@ -20,7 +20,7 @@ public class RatingReviewController {
     public String addRatingReviewPage(Model model) {
         RatingReview ratingReview = new RatingReview();
         model.addAttribute("ratingReview", ratingReview);
-        return "addRatingReview";
+        return "AddRatingReview";
     }
 
     @PostMapping("/add")
@@ -33,6 +33,6 @@ public class RatingReviewController {
     public String ratingReviewListPage(Model model) {
         List<RatingReview> allRatingReview = service.findAll();
         model.addAttribute("ratingReviews", allRatingReview);
-        return "listRatingReview";
+        return "RatingReviewList";
     }
 }
