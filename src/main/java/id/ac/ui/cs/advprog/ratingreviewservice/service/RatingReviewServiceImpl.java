@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class RatingReviewServiceImpl implements RatingReviewService {
+
     @Autowired
     private RatingReviewRepository ratingReviewRepository;
 
@@ -26,5 +27,20 @@ public class RatingReviewServiceImpl implements RatingReviewService {
         List<RatingReview> allRatingReview = new ArrayList<>();
         ratingReviewIterator.forEachRemaining(allRatingReview::add);
         return allRatingReview;
+    }
+
+    @Override
+    public RatingReview findById(String id) {
+        return ratingReviewRepository.findById(id);
+    }
+
+    @Override
+    public void update(String id, RatingReview ratingReview) {
+        ratingReviewRepository.update(id, ratingReview);
+    }
+
+    @Override
+    public void delete(String id) {
+        ratingReviewRepository.delete(id);
     }
 }

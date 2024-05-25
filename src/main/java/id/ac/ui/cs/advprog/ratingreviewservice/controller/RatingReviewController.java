@@ -35,4 +35,23 @@ public class RatingReviewController {
         model.addAttribute("ratingReviews", allRatingReview);
         return "RatingReviewList";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editRatingReviewPage(Model model, @PathVariable String id) {
+        RatingReview ratingReview = service.findById(id);
+        model.addAttribute("ratingReview", ratingReview);
+        return "EditRatingReview";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editRatingReviewPost(@ModelAttribute RatingReview ratingReview, @PathVariable String id) {
+        service.update(id, ratingReview);
+        return "redirect:/rating-review/list";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteRatingReview(@PathVariable("id") String id) {
+        service.delete(id);
+        return "redirect:/rating-review/list";
+    }
 }

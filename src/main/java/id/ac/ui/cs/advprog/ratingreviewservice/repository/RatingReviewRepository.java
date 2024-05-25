@@ -19,4 +19,28 @@ public class RatingReviewRepository{
     public Iterator<RatingReview> findAll(){
         return ratingReviewData.iterator();
     }
+
+    public RatingReview findById(String id) {
+        for (RatingReview ratingReview : ratingReviewData) {
+            if (ratingReview.getRatingReviewId().equals(id)) {
+                return ratingReview;
+            }
+        }
+        return null;
+    }
+
+    public void update(String id, RatingReview updateRatingReview) {
+        for (RatingReview ratingReview : ratingReviewData) {
+            if (ratingReview.getRatingReviewId().equals(id)) {
+                ratingReview.setRating(updateRatingReview.getRating());
+                ratingReview.setReview(updateRatingReview.getReview());
+                return;
+            }
+        }
+    }
+
+    public void delete(String id) {
+        RatingReview ratingReview = findById(id);
+        ratingReviewData.remove(ratingReview);
+    }
 }

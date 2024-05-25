@@ -18,6 +18,8 @@
             <th scope="col">Username</th>
             <th scope="col">Rating</th>
             <th scope="col">Review</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +28,12 @@
             <td th:text="${ratingReview.ownerName}"></td>
             <td th:text="${ratingReview.rating}"></td>
             <td th:text="${ratingReview.review}"></td>
+            <td>
+                <a th:href="@{/rating-review/edit/{id}(id=${ratingReview.getRatingReviewId()})}" class="btn btn-primary btn-sm">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{/rating-review/delete/{id}(id=${ratingReview.getRatingReviewId()})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>
