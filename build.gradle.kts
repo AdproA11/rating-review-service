@@ -3,6 +3,15 @@ plugins {
 	jacoco
 	id("org.springframework.boot") version "3.2.4"
 	id("io.spring.dependency-management") version "1.1.4"
+	id("org.sonarqube") version "4.4.1.3373"
+}
+
+sonar {
+	properties {
+		property("sonar.projectKey", "AdproA11_rating-review-service")
+		property("sonar.organization", "adproa11")
+		property("sonar.host.url", "https://sonarcloud.io")
+	}
 }
 
 group = "id.ac.ui.cs.advprog"
@@ -74,11 +83,9 @@ tasks.test {
 	finalizedBy(tasks.jacocoTestReport)
 }
 
-tasks.jacocoTestReport {
-	dependsOn(tasks.test)
+tasks.jacocoTestReport{
 	reports {
-		xml.required.set(true)
-		csv.required.set(true)
-		html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
+		xml.required = true
 	}
+	dependsOn(tasks.test)
 }
