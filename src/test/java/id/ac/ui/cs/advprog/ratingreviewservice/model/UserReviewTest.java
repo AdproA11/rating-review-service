@@ -1,12 +1,13 @@
 package id.ac.ui.cs.advprog.ratingreviewservice.model;
 
+import id.ac.ui.cs.advprog.ratingreviewservice.enums.UserReviewStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserReviewTest {
     private List<RatingReview> ratingReviews;
@@ -56,9 +57,9 @@ public class UserReviewTest {
     @Test
     void testCreateUserReviewApprovedStatus() {
         UserReview userReview = new UserReview ("13652556-012a-4c07-b546-54eb1396d79b",
-                this.ratingReviews, 1708568000L, "Burhan", "APPROVED");
-        userReview.setStatus("APPROVED");
-        assertEquals("APPROVED", userReview.getStatus());
+                this.ratingReviews, 1708568000L, "Burhan",
+                UserReviewStatus.APPROVED.getValue());
+        assertEquals(UserReviewStatus.APPROVED.getValue(), userReview.getStatus());
     }
 
     @Test
