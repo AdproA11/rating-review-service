@@ -120,7 +120,7 @@ public class RatingReviewRepositoryTest {
     }
 
     @Test
-    void testDeleteProductNonExistent() {
+    void testDeleteRatingReviewtNonExistent() {
         assertDoesNotThrow(() -> ratingReviewRepository.delete("nonexistent-id"));
     }
 }
