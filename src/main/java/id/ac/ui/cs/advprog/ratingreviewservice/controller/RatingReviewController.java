@@ -20,6 +20,14 @@ public class RatingReviewController {
     @Autowired
     private RatingReviewService service;
 
+    @GetMapping("/api/rating-review/all")
+    public List<RatingReview> getAllRatingReviews() {
+        Iterator<RatingReview> iterator = service.findAll();
+        List<RatingReview> ratingReviews = new ArrayList<>();
+        iterator.forEachRemaining(ratingReviews::add);
+        return ratingReviews;
+    }
+
     @GetMapping("/add/{boxId}")
     public String addRatingReviewPage(@PathVariable("boxId") Long boxId, Model model) {
         RatingReview ratingReview = new RatingReview();
