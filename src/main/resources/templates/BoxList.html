@@ -16,6 +16,7 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
+            <th scope="col">Review</th>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +25,9 @@
             <td th:text="${box.name}"></td>
             <td th:text="${box.description}"></td>
             <td th:text="${box.price}"></td>
+            <td>
+                <a th:href="@{'/rating-review/list/' + ${box.id}}" class="btn btn-primary">View Reviews</a>
+            </td>
         </tr>
         </tbody>
     </table>

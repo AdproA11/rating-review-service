@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.*;
 
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/rating-review")
@@ -37,6 +37,23 @@ public class RatingReviewController {
     public String ratingReviewListPage(Model model) {
         List<RatingReview> allRatingReview = service.findAll();
         model.addAttribute("ratingReviews", allRatingReview);
+        return "RatingReviewList";
+    }
+
+    @GetMapping("/list/{boxId}")
+    public String ratingReviewListPage(@PathVariable("boxId") Long boxId, Model model) {
+        List<RatingReview> allRatingReview = service.findAll();
+        List<RatingReview> ratingReviewsWithBoxId = new ArrayList<>();
+
+        for (RatingReview ratingReview : allRatingReview) {
+            if (ratingReview.getBoxId() == boxId) {
+                ratingReviewsWithBoxId.add(ratingReview);
+            }
+        }
+
+        model.addAttribute("ratingReviews", ratingReviewsWithBoxId);
+        model.addAttribute("boxId", boxId);
+
         return "RatingReviewList";
     }
 
