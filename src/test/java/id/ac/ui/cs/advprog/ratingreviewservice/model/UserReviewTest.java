@@ -34,7 +34,7 @@ public class UserReviewTest {
     @Test
     void testCreateUserReviewPendingStatus() {
         UserReview userReview = new UserReview ("13652556-012a-4c07-b546-54eb1396d79b",
-                this.ratingReviews, 1788568000L, "Burhan");
+                this.ratingReviews, 1708560000L, "Burhan");
 
         assertSame(this. ratingReviews, userReview.getRatingReviews());
         assertEquals(1, userReview.getRatingReviews().size());
