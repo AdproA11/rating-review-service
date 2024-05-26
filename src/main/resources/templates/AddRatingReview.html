@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
             <label for="ratingInput">Rating</label>
-            <input th:field="*{rating}" type="number" step="1" class="form-control mb-4 col-4" id="ratingInput" placeholder="Enter your rating for this box">
+            <input th:field="*{rating}" type="number" step="1" min="1" max="5" class="form-control mb-4 col-4" id="ratingInput" placeholder="Enter your rating for this box">
         </div>
         <div class="form-group">
             <label for="reviewInput">Review</label>

@@ -43,7 +43,7 @@ public class RatingReviewController {
         return "EditRatingReview";
     }
 
-    @PostMapping("/edit")
+    @PutMapping("/edit")
     public String editRatingReviewPut(@ModelAttribute RatingReview ratingReview) {
         service.update(ratingReview);
         return "redirect:list";
