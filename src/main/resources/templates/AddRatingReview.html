@@ -10,7 +10,8 @@
 <div class="container">
     <h3>Add a new rating and review</h3>
 
-    <form th:action="@{/rating-review/add}" th:object="${ratingReview}" method="post">
+    <form th:action="@{'/rating-review/add/' + ${boxId}}" th:object="${ratingReview}" method="post">
+        <input type="hidden" th:field="*{boxId}" th:value="${boxId}" />
         <div class="form-group">
             <label for="nameInput">Name</label>
             <input th:field="*{ownerName}" type="text" class="form-control mb-4 col-4" id="nameInput" placeholder="Enter your name">
@@ -23,7 +24,7 @@
             <label for="reviewInput">Review</label>
             <input th:field="*{review}" type="text" class="form-control mb-4 col-4" id="reviewInput" placeholder="Enter your review for this box">
         </div>
-        <a th:href="@{/rating-review/list}" class="btn btn-danger btn-sm">Back</a>
+        <a th:href="@{'/rating-review/list/' + ${boxId}}" class="btn btn-danger btn-sm">Back</a>
         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
     </form>
 </div>

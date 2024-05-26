@@ -20,17 +20,20 @@ public class RatingReviewController {
     @Autowired
     private RatingReviewService service;
 
-    @GetMapping("/add")
-    public String addRatingReviewPage(Model model) {
+    @GetMapping("/add/{boxId}")
+    public String addRatingReviewPage(@PathVariable("boxId") Long boxId, Model model) {
         RatingReview ratingReview = new RatingReview();
+        ratingReview.setBoxId(boxId); // Set boxId
         model.addAttribute("ratingReview", ratingReview);
+        model.addAttribute("boxId", boxId); // Add boxId to model
         return "AddRatingReview";
     }
 
-    @PostMapping("/add")
-    public String addRatingReviewPost(@ModelAttribute RatingReview ratingReview, Model model) {
+    @PostMapping("/add/{boxId}")
+    public String addRatingReviewPost(@ModelAttribute RatingReview ratingReview, @PathVariable("boxId") Long boxId, Model model) {
+        ratingReview.setBoxId(boxId);
         service.create(ratingReview);
-        return "redirect:/rating-review/list";
+        return "redirect:/rating-review/list/"+ boxId;
     }
 
     @GetMapping("/list")
