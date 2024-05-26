@@ -30,17 +30,17 @@ public class RatingReviewServiceImpl implements RatingReviewService {
     }
 
     @Override
-    public RatingReview findById(String id) {
-        return ratingReviewRepository.findById(id);
+    public RatingReview findById(String ratingReviewId) {
+        return ratingReviewRepository.findById(ratingReviewId);
     }
 
     @Override
-    public void update(String id, RatingReview ratingReview) {
-        ratingReviewRepository.update(id, ratingReview);
+    public RatingReview update(RatingReview updatedRatingReview) {
+        return ratingReviewRepository.update(updatedRatingReview);
     }
 
     @Override
-    public void delete(String id) {
-        ratingReviewRepository.delete(id);
+    public RatingReview delete(String ratingReviewId) {
+        return ratingReviewRepository.delete(ratingReviewId);
     }
 }

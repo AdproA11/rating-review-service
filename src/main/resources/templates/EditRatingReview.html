@@ -10,7 +10,11 @@
 <div class="container">
     <h3>Edit Your Rating and Review</h3>
 
-    <form th:action="@{/rating-review/edit/{id}(id=${ratingReview.getRatingReviewId()})}" th:object="${ratingReview}" method="post">
+    <form th:action="@{/rating-review/edit}" th:object="${ratingReview}" th:method="post">
+        <input type="hidden" name="_method" value="put"/>
+        <div class="form-group">
+            <input th:field="*{ratingReviewId}" type="hidden" th:value="*{ratingReviewId}"/>
+        </div>
         <div class="form-group">
             <label for="ratingInput">Rating</label>
             <input th:field="*{rating}" type="number" step="1" class="form-control mb-4 col-4" id="ratingInput" placeholder="Enter your new rating for this box">

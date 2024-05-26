@@ -32,7 +32,10 @@
                 <a th:href="@{/rating-review/edit/{id}(id=${ratingReview.getRatingReviewId()})}" class="btn btn-primary btn-sm">Edit</a>
             </td>
             <td>
-                <a th:href="@{/rating-review/delete/{id}(id=${ratingReview.getRatingReviewId()})}" class="btn btn-danger btn-sm">Delete</a>
+                <form th:action="@{/rating-review/delete/{id}(id=${ratingReview.getRatingReviewId()})}" method="post" style="display:inline;">
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
             </td>
         </tr>
         </tbody>

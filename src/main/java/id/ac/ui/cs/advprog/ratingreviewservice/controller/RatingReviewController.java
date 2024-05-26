@@ -24,9 +24,9 @@ public class RatingReviewController {
     }
 
     @PostMapping("/add")
-    public String addRatingReview(@ModelAttribute RatingReview ratingReview, Model model) {
+    public String addRatingReviewPost(@ModelAttribute RatingReview ratingReview, Model model) {
         service.create(ratingReview);
-        return "redirect:list";
+        return "redirect:/rating-review/list";
     }
 
     @GetMapping("/list")
@@ -36,22 +36,22 @@ public class RatingReviewController {
         return "RatingReviewList";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editRatingReviewPage(Model model, @PathVariable String id) {
-        RatingReview ratingReview = service.findById(id);
+    @GetMapping("/edit/{ratingReviewId}")
+    public String editRatingReviewPage(Model model, @PathVariable("ratingReviewId") String ratingReviewId) {
+        RatingReview ratingReview = service.findById(ratingReviewId);
         model.addAttribute("ratingReview", ratingReview);
         return "EditRatingReview";
     }
 
-    @PostMapping("/edit/{id}")
-    public String editRatingReviewPost(@ModelAttribute RatingReview ratingReview, @PathVariable String id) {
-        service.update(id, ratingReview);
-        return "redirect:/rating-review/list";
+    @PostMapping("/edit")
+    public String editRatingReviewPut(@ModelAttribute RatingReview ratingReview) {
+        service.update(ratingReview);
+        return "redirect:list";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteRatingReview(@PathVariable("id") String id) {
-        service.delete(id);
-        return "redirect:/rating-review/list";
+    @DeleteMapping("/delete/{ratingReviewId}")
+    public String deleteRatingReview(@PathVariable("ratingReviewId") String ratingReviewId) {
+        service.delete(ratingReviewId);
+        return "redirect:../list";
     }
 }
