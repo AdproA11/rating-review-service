@@ -4,5 +4,6 @@
 
 ### Ramadhan Andika Putra (2206081976)
 <br>
-Set Up Grafana for monitoring<br>
+Set Up Grafana for monitoring
+
 ![image](https://github.com/AdproA11/rating-review-service/assets/119088782/33ee9db7-1ca3-4b57-859c-4557d3b7c0c3)
