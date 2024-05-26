@@ -8,15 +8,15 @@ import java.util.Iterator;
 import java.util.List;
 
 @Repository
-public class RatingReviewRepository{
+public class RatingReviewRepository {
     private List<RatingReview> ratingReviewData = new ArrayList<>();
 
-    public RatingReview create(RatingReview ratingReview){
+    public RatingReview create(RatingReview ratingReview) {
         ratingReviewData.add(ratingReview);
         return ratingReview;
     }
 
-    public Iterator<RatingReview> findAll(){
+    public Iterator<RatingReview> findAll() {
         return ratingReviewData.iterator();
     }
 
@@ -29,18 +29,24 @@ public class RatingReviewRepository{
         return null;
     }
 
-    public void update(String id, RatingReview updateRatingReview) {
+    public RatingReview update(RatingReview updateRatingReview) {
+
         for (RatingReview ratingReview : ratingReviewData) {
-            if (ratingReview.getRatingReviewId().equals(id)) {
+            if (ratingReview.getRatingReviewId().equals(updateRatingReview.getRatingReviewId())) {
+                if (updateRatingReview.getRating() <= 0) {
+                    updateRatingReview.setRating(0);
+                }
                 ratingReview.setRating(updateRatingReview.getRating());
                 ratingReview.setReview(updateRatingReview.getReview());
-                return;
+                return ratingReview;
             }
         }
+        return null;
     }
 
-    public void delete(String id) {
-        RatingReview ratingReview = findById(id);
-        ratingReviewData.remove(ratingReview);
+    public RatingReview delete(String ratingReviewId) {
+        RatingReview deletedRatingReview = findById(ratingReviewId);
+        ratingReviewData.remove(deletedRatingReview);
+        return deletedRatingReview;
     }
 }
